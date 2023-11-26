@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" integrity="sha512-siarrzI1u3pCqFG2LEzi87McrBmq6Tp7juVsdmGY1Dr8Saw+ZBAzDzrGwX3vgxX1NkioYNCFOVC0GpDPss10zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional CSS for styling and animations */
+        body {
+            background-color: #fff;
+            margin-top: 0;
+            padding-top: 50px;
+            border-radius: 40%;
+        }
+        .mage{
+  background-color: yellow;
+  color: red;
+}
+.container {
+  max-width: 900px;
+  margin: auto;
+  background-color: navy;
+  color: mediumspringgreen;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+
+}
+.btn{
+    background-color: blueviolet;
+    margin-bottom: 80px;
+}
+        /* Style for fading in from different directions */
+        .fade-in-left {
+            animation: fadeInLeft 5s ease-out;
+        }
+        .fade-in-right {
+            animation: fadeInRight 5s ease-out;
+        }
+        .fade-in-down {
+            animation: fadeInDown 5s ease-out;
+        }
+        @keyframes fadeInLeft {
+            from {
+                opacity: 1;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes fadeInRight {
+            from {
+                opacity: 1;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .navbar > img{
+          object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+  
+
+    <div class="container">
+        <!-- Alert Messages -->
+        <div class="mage">
+            <marquee behavior="" direction="">please fill the form carefully !!!</marquee>
+            {% for msg in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" style="color: green; background-color: #fff;">
+                    <strong>Unical student!</strong> {{ msg }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+<div class="img">
+    <img src="{% static 'images/menoftimber.jpg' %}" alt="" style="height: 200px !important; width: 100% !important; object-fit: cover;justify-content: center !important; border-radius: 18px !important; border-radius: 18px; margin-top: 5px;">
+    <p class="mt-2 text-center">men them</p>
+</div>
+        <!-- Registration Form -->
+        <h2 class="mb-4 text-center" style="color: yellow !important; border: 2px dotted gold; background-color: blueviolet; border-radius: 18px;margin-top: 50px;">Business Management Year 2 Form</h2>
+        <form id="registrationForm" action="." method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Surname -->
+            <div class="form-group fade-in-left">
+                <label for="surname">Surname:</label>
+                <input name="surname" type="text" class="form-control" id="surname" placeholder="Enter your surname" required>
+            </div>
+            <!-- Middle Name -->
+            <div class="form-group fade-in-right">
+                <label for="middlename">Middle Name:</label>
+                <input type="text" class="form-control" id="middlename" name="middlename" placeholder="Enter your middle name">
+            </div>
+            <!-- Last Name -->
+            <div class="form-group fade-in-down">
+                <label for="lastname">Last Name:</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter your last name" required>
+            </div>
+            <!-- Faculty -->
+            <div class="form-group fade-in-left">
+                <label for="faculty">Faculty:</label>
+                <input type="text" class="form-control" id="faculty" name="faculty" placeholder="Enter your faculty" required>
+            </div>
+            <!-- Department -->
+            <div class="form-group fade-in-right">
+                <label for="department">Department:</label>
+                <input type="text" class="form-control" id="department" name="department" placeholder="Enter your department" required>
+            </div>
+            <!-- Sex -->
+            <div class="form-group fade-in-down" style="color: yellow !important;">
+                <label>Sex:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sex" id="male" value="male" required>
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sex" id="female" value="female" required>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+            </div>
+            <!-- Matric Number -->
+            <div class="form-group fade-in-left">
+                <label for="matric_number">Matric Number:</label>
+                <input type="text" class="form-control" id="matric_number" name="matric_number" placeholder="Enter your matric number" required>
+            </div>
+            <!-- Level -->
+            <div class="form-group fade-in-right">
+                <label for="level">Level:</label>
+                <input type="text" class="form-control" id="level" name="level" placeholder="Enter your level" required>
+            </div>
+            <!-- Email -->
+            <div class="form-group fade-in-down" style="color: orangered;">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <!-- Phone Number -->
+            <div class="form-group fade-in-left">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success fade-in-right w-100" style="background-color: gold !important; color: darkred;">Submit</button>
+        </form>
+
+        <!-- Additional Information -->
+        <div class="van">
+            <h6 class="mb-4">This app was built by <br>Comrade. Udeh Chigozie Kingsley <br>(Business management Student)</h6>
+            <img src="{% static 'images/keeee.jpg' %}" alt="images">
+            <h4>(phone: 08167841322)</h4>
+        </div>
+    </div>
+    <footer class="footer mt-auto py-4 bg-info" style="border-radius: 18px;">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <h5>About Us</h5>
+                  <p class="mb-0" style="color: mediumspringgreen !important; background-color: brown; align-items: center;border-radius: 18px;">
+                    "Big thanks to Babalola Ezekiel, our class rep, whose suggestion sparked the creation of this app. Your proactive approach in advocating for innovative solutions is truly appreciated!"</p>
+                    <img src="{% static 'images/babamiii.jpg' %}" alt="images">
+                    <p style="margin: 0; !important;">(Babalola Ezekiel D.)</p>
+                    <p style="margin: 0; !important;">(Class Rep.)</p>
+                  </div>
+              <div class="col-md-4">
+                  <h5 style="margin-top: 15px; !important;">Quick Links</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Services</a></li>
+                      <li><a href="#">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-4" style="border: 2px dotted fuchsia; color: yellow; border-radius: 18px;">
+                  <h5>Contact Info</h5>
+                  <address>
+                      <strong style="color: springgreen;">Faculty of management sciences</strong><br>
+                      University of calabar,calabar<br>
+                      Cross Rivers state.<br>
+                      <abbr title="Phone">Phone:</abbr> 08167841322<br>
+                      <abbr title="Email">Email:</abbr> bigdave@gmail.com
+                  </address>
+              </div>
+          </div>
+      </div>
+      <div class="text-center py-3">
+          <p class="mb-0" style="color: mediumspringgreen !important;">Connect with us on:</p>
+          <div class="social-icons">
+              <a href="#" class="social-icon" style="color: yellow !important;"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon" style="color: red !important;"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon" style="color: blue !important;"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon" style="color: violet !important;"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" class="social-icon" style="color: oldlace !important;"><i class="fab fa-linkedin"></i></a>
+          </div>
+      </div>
+      <div class="text-center">
+          <p class="mb-0 text-muted" style="color: blueviolet !important;">&copy; 2023 Business Management year2. All rights reserved.</p>
+      </div>
+  </footer>
+  
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Trigger the fade-in animations when the page loads
+            $('#registrationForm .form-group').each(function(index) {
+                $(this).delay(4000 * index).queue(function() {
+                    $(this).addClass('animated');
+                });
+            });
+        });
+    </script
